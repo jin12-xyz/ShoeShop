@@ -1,0 +1,75 @@
+# ============================================
+# .NET / ASP.NET Core
+# ============================================
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ============================================
+# Visual Studio
+# ============================================
+.vs/
+*.rsuser
+*.vspx
+*.sap
+*.sln.iml
+.vscode/
+
+# ============================================
+# NuGet
+# ============================================
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ============================================
+# Entity Framework Migrations (optional)
+# ============================================
+# Uncomment if you don't want to track migrations
+# Migrations/
+
+# ============================================
+# App Settings (sensitive data)
+# ============================================
+appsettings.Development.json
+appsettings.Production.json
+secrets.json
+
+# ============================================
+# Node / Tailwind (if using NPM setup)
+# ============================================
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# ============================================
+# Compiled CSS Output (Tailwind)
+# ============================================
+wwwroot/css/output.css
+
+# ============================================
+# Published Output
+# ============================================
+publish/
+**/publish/
+launchSettings.json
+
+# ============================================
+# OS Generated
+# ============================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================
+# Logs
+# ============================================
+*.log
+logs/

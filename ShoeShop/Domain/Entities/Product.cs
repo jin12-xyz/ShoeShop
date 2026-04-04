@@ -8,6 +8,7 @@
         public string Description { get; set; } = string.Empty;
         public decimal BasePrice { get; set; }
         public string Brand { get; set; } = string.Empty;
+        public string Gender { get; set; } = string.Empty;
         public string SKU { get; set; } = string.Empty;
         public bool IsActive { get; set; } = true;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

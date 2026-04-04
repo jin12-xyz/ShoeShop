@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Shop.Models.Domain;
 
-namespace Shop.Data
+namespace Shop.Infrastructure.Data
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -44,6 +44,10 @@ namespace Shop.Data
                 .IsRequired()
                 .HasMaxLength(100);
 
+                entity.Property(p => p.Gender)
+                .IsRequired()
+                .HasMaxLength(20);
+
                 entity.Property(p => p.SKU)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -84,6 +88,10 @@ namespace Shop.Data
             // Product variant 
             builder.Entity<ProductVariant>(entity =>
             {
+                entity.Property(p => p.Price)
+                .HasColumnType("decimla(18, 2)")
+                .IsRequired();
+
                 entity.HasKey(p => p.Id);
                 entity.Property(p => p.Size)
                 .IsRequired()

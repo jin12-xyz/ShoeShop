@@ -57,6 +57,14 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Auth/AccessDenied";
     options.ExpireTimeSpan = TimeSpan.FromDays(7);
 });
+// Make the controller look for views inside the Web folder
+builder.Services.AddControllersWithViews()
+    .AddRazorOptions(options =>
+    {
+        // MVC will now also look in Web/<Controller>/<View>.cshtml
+        options.ViewLocationFormats.Add("/Web/Views/{1}/{0}.cshtml");
+        options.ViewLocationFormats.Add("/Web/Views/Shared/{0}.cshtml"); // for shared layouts
+    });
 
 var app = builder.Build();
 

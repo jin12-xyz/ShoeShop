@@ -89,7 +89,7 @@ namespace Shop.Infrastructure.Data
             builder.Entity<ProductVariant>(entity =>
             {
                 entity.Property(p => p.Price)
-                .HasColumnType("decimla(18, 2)")
+                .HasColumnType("decimal(18, 2)")
                 .IsRequired();
 
                 entity.HasKey(p => p.Id);

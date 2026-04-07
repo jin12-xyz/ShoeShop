@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Application\DTOs\Product\" />
     <Folder Include="Web\Views\Home\" />
-    <Folder Include="Web\Views\Shared\" />
     <Folder Include="Web\Controllers\" />
   </ItemGroup>
 

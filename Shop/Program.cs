@@ -5,6 +5,7 @@ using Shop.Application.Interfaces.Services;
 using Shop.Application.Mappings;
 using Shop.Application.Services;
 using Shop.Infrastructure.Data;
+using Shop.Infrastructure.Data.Seeders;
 using Shop.Infrastructure.Repositories;
 using Shop.Models.Domain;
 
@@ -45,6 +46,11 @@ builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 
 // ========== SERVICES ==============
 builder.Services.AddScoped<IAuthService,AuthService>();
+// Repositories
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+// Services
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -89,6 +95,23 @@ using (var scope = app.Services.CreateScope())
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
     }
+
+// ================================
+// Seed Database
+// ================================
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider
+        .GetRequiredService<UserManager<ApplicationUser>>();
+
+    var roleManager = scope.ServiceProvider
+        .GetRequiredService<RoleManager<IdentityRole>>();
+
+    var config = scope.ServiceProvider
+        .GetRequiredService<IConfiguration>();
+
+    await AdminSeeder.SeedAsync(userManager, roleManager, config);
+}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

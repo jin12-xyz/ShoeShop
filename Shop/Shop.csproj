@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Application\DTOs\Product\" />
-    <Folder Include="Web\Views\Home\" />
-    <Folder Include="Web\Controllers\" />
   </ItemGroup>
 
   <ItemGroup>

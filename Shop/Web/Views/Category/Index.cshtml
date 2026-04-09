@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Shop.Web.ViewModels.Category.CategoryViewModel>
+@{
+    ViewData["Title"] = "Categories";
+}
+
+@* Page Header *@
+<div class="flex items-center justify-between mb-6">
+    <div>
+        <h1 class="text-2xl font-semibold text-gray-900">Categories</h1>
+        <p class="text-sm text-gray-500 mt-1">
+            Manage your product categories
+        </p>
+    </div>
+    <a asp-action="Create"
+       class="bg-black text-white px-4 py-2 rounded-lg text-sm
+              font-medium hover:bg-gray-800 transition">
+        + Add Category
+    </a>
+</div>
+
+@* Table *@
+<div class="bg-white border border-gray-100 rounded-2xl overflow-hidden">
+    <table class="w-full text-sm">
+        <thead>
+            <tr class="border-b border-gray-100 bg-gray-50">
+                <th class="text-left px-6 py-4 text-xs font-medium
+                           text-gray-500 uppercase tracking-wider">
+                    Name
+                </th>
+                <th class="text-left px-6 py-4 text-xs font-medium
+                           text-gray-500 uppercase tracking-wider">
+                    Slug
+                </th>
+                <th class="text-left px-6 py-4 text-xs font-medium
+                           text-gray-500 uppercase tracking-wider">
+                    Description
+                </th>
+                <th class="text-center px-6 py-4 text-xs font-medium
+                           text-gray-500 uppercase tracking-wider">
+                    Products
+                </th>
+                <th class="text-right px-6 py-4 text-xs font-medium
+                           text-gray-500 uppercase tracking-wider">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-50">
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="5" class="px-6 py-12 text-center
+                                               text-gray-400 text-sm">
+                        No categories found.
+                        <a asp-action="Create"
+                           class="text-black font-medium hover:underline">
+                            Create one
+                        </a>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var category in Model)
+                {
+                    <tr class="hover:bg-gray-50 transition">
+                        @* Name *@
+                        <td class="px-6 py-4">
+                            <p class="font-medium text-gray-900">
+                                @category.Name
+                            </p>
+                        </td>
+
+                        @* Slug *@
+                        <td class="px-6 py-4">
+                            <span class="bg-gray-100 text-gray-600
+                                                 px-2 py-1 rounded text-xs
+                                                 font-mono">
+                                @category.Slug
+                            </span>
+                        </td>
+
+                        @* Description *@
+                        <td class="px-6 py-4 text-gray-500 max-w-xs truncate">
+                            @(category.Description ?? "—")
+                        </td>
+
+                        @* Product Count *@
+                        <td class="px-6 py-4 text-center">
+                            <span class="bg-gray-100 text-gray-700
+                                                 px-2.5 py-1 rounded-full text-xs
+                                                 font-medium">
+                                @category.ProductCount
+                            </span>
+                        </td>
+
+                        @* Actions *@
+                        <td class="px-6 py-4">
+                            <div class="flex items-center justify-end gap-2">
+                                <a asp-action="Edit"
+                                   asp-route-id="@category.Id"
+                                   class="text-xs text-gray-500 hover:text-gray-900
+                                                  border border-gray-200 px-3 py-1.5
+                                                  rounded-lg hover:border-gray-400 transition">
+                                    Edit
+                                </a>
+                                <a asp-action="Delete"
+                                   asp-route-id="@category.Id"
+                                   class="text-xs text-red-500 hover:text-red-700
+                                                  border border-red-100 px-3 py-1.5
+                                                  rounded-lg hover:border-red-300 transition">
+                                    Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

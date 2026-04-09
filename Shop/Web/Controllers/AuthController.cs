@@ -89,7 +89,8 @@ namespace Shop.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // -------- Logout -----------
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _authService.LogoutAsync();

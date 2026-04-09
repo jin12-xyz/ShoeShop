@@ -12,16 +12,10 @@ namespace Shop.Infrastructure.Repositories
         {
         }
 
-        public async Task<IEnumerable<CategoryDto>> GetCategoriesWithProductCountAsync()
-        {        
+        public async Task<IEnumerable<Category>> GetCategoriesWithProductCountAsync()
+        {
             return await _dbSet
-                .Select(c => new CategoryDto
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    Slug = c.Slug,
-                    ProductCount = c.Products.Count()
-                })
+                .Include(c => c.Products)
                 .ToListAsync();
         }
         public async Task<Category?> GetCategoryWithProductAsync(int id)

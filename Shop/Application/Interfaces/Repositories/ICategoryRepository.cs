@@ -8,7 +8,7 @@ namespace Shop.Application.Interfaces.Repositories
     public interface ICategoryRepository : IRepository<Category>
     {
         // Get all categories with product counts (admin list)
-        Task<IEnumerable<CategoryDto>> GetCategoriesWithProductCountAsync();
+        Task<IEnumerable<Category>> GetCategoriesWithProductCountAsync();
 
         // Get single Category with its product
         Task<Category?> GetCategoryWithProductAsync(int id);
